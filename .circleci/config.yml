@@ -3,7 +3,7 @@
    build:
      working_directory: ~/react_ci
      docker:
-       - image: circleci/node:7.10
+       - image: circleci/node:10.16
      steps:
        - checkout
        - run: echo "echo pwd"
@@ -21,7 +21,7 @@
 
    test:
      docker:
-       - image: circleci/node:7.10
+       - image: circleci/node:10.16
      steps:
        - checkout
        - run:
