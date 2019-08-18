@@ -20,6 +20,7 @@
           command: npm install
 
    test:
+     working_directory: ~/react_ci
      docker:
        - image: circleci/node:10.16
      steps:
