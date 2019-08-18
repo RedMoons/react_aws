@@ -1,9 +1,7 @@
  version: 2
  jobs:
    build:
-
     working_directory: ~/react_ci
-
     docker:
        - image: circleci/node:4.8.2-jessie
     steps:
@@ -20,8 +18,7 @@
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
-
-  test:
+   test:
     docker:
       - image: circleci/node:4.8.2-jessie
     steps:
