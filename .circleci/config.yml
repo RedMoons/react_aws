@@ -9,7 +9,7 @@
        - run: echo "echo pwd"
        - run: pwd
        - run: echo "echo ls -l"
-       - run: ls -l
+       - run: ls -l react_ci
 
        - run:
           name: Update npm
