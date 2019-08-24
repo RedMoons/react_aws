@@ -1,7 +1,7 @@
  version: 2
  jobs:
    build:
-     working_directory: ~/react_ci/
+     working_directory: ~/react_ci
      docker:
        - image: circleci/node:10.16
      steps:
@@ -14,11 +14,16 @@
        - run:
           name: Update npm
           command: 'sudo npm install -g npm@latest'
-
+       - restore_cache: # special step to restore the dependency cache
+          # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+          key: dependency-cache-{{ checksum "package.json" }}
        - run:
           name: Install npm wee
           command: npm install
-
+       - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+             - ./node_modules
    test:
      working_directory: ~/react_ci
      docker:
@@ -28,6 +33,18 @@
        - run:
           name: Test
           command: npm test
+      - run: # run coverage report
+          name: code-coverage
+          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - store_artifacts: # special step to save test results as as artifact
+          # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
+          path: test-results.xml
+          prefix: tests
+      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/ 
+          path: coverage
+          prefix: coverage
+      - store_test_results: # for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+          path: test-results.xml
  workflows:
    version: 2
    build_and_test:
