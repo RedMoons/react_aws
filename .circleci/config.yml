@@ -1,7 +1,6 @@
  version: 2
  jobs:
    build:
-     working_directory: ~/react_ci
      docker:
        - image: circleci/node:10.16
      steps:
