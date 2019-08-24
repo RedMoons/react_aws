@@ -34,6 +34,7 @@
      steps:
        - checkout
        - run: pwd
+       - run: ls -l
        - run: cd react_ci
        - run: pwd
        - run:
