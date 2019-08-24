@@ -28,11 +28,12 @@
           paths:
              - ./node_modules
    test:
-     working_directory: ~/react_ci
+     working_directory: ~/work
      docker:
        - image: circleci/node:10.16
      steps:
        - checkout
+       - run: cd react_ci
        - run:
           name: Test
           command: npm test
