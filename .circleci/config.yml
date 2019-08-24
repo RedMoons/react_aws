@@ -9,8 +9,9 @@
        - run: echo "echo pwd"
        - run: pwd
        - run: ls -l /home/circleci
-       - run: ls -l /home/circleci/react_ci
-       - run: ls -l /home/circleci/react_ci/package.json
+       - run: ls -l /home/circleci/work
+       - run: ls -l /home/circleci/work/react_ci
+       - run: ls -l /home/circleci/work/react_ci/package.json
 
        - run:
           name: Update npm
