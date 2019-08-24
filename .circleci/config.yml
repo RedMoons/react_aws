@@ -1,14 +1,15 @@
  version: 2
  jobs:
    build:
+     working_directory: ~/react_ci
      docker:
        - image: circleci/node:10.16
      steps:
        - checkout
        - run: echo "echo pwd"
        - run: pwd
-       - run: echo "echo ls -l"
        - run: ls -l react_ci
+       - run: ls -l /home/circleci/project/package.json
 
        - run:
           name: Update npm
