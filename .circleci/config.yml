@@ -12,6 +12,7 @@
        - run: ls -l /home/circleci/work
        - run: ls -l /home/circleci/work/react_ci
        - run: ls -l /home/circleci/work/react_ci/package.json
+       - run: cd react_ci
 
        - run:
           name: Update npm
